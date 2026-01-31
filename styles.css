@@ -1,0 +1,430 @@
+ #idiomateWidgetBrand{
+      /* verdes un poco más oscuros */
+      --green:#6F8F2F;
+      --green2:#56731F;
+
+      --coral:#FF7A59;
+      --coral2:#E96445;
+
+      --ink:#1f1f1f;
+      --muted:#6d6d6d;
+      --line:rgba(0,0,0,.10);
+      --bg:#ffffff;
+      --max:1120px;
+
+      font-family: Arial, Helvetica, system-ui, -apple-system, "Segoe UI", Roboto;
+      color:var(--ink);
+      background:var(--bg);
+      border:1px solid var(--line);
+      border-radius:12px;
+      overflow:hidden;
+      position:relative;
+    }
+    #idiomateWidgetBrand *{ box-sizing:border-box; }
+
+    /* Hero */
+    #idiomateWidgetBrand .hero{ background:#fff; }
+    #idiomateWidgetBrand .heroGrid{
+      display:grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap:28px;
+      align-items:center;
+      padding:34px 18px;
+      max-width:var(--max);
+      margin:0 auto;
+    }
+    #idiomateWidgetBrand h1{
+      margin:0 0 14px;
+      font-size:50px;
+      line-height:1.02;
+      color:var(--green2);
+      font-weight:900;
+      letter-spacing:-.2px;
+    }
+    #idiomateWidgetBrand .accent{ color:var(--coral); }
+    #idiomateWidgetBrand .lead{
+      margin:0 0 22px;
+      color:var(--muted);
+      font-size:16px;
+      line-height:1.65;
+      max-width:590px;
+    }
+    #idiomateWidgetBrand .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      border:none;
+      padding:14px 26px;
+      border-radius:4px;
+      font-weight:900;
+      cursor:pointer;
+      transition: transform .15s ease, filter .15s ease;
+      will-change: transform;
+    }
+    #idiomateWidgetBrand .btn:active{ transform: translateY(1px); }
+    #idiomateWidgetBrand .btn.primary{ background:var(--coral); color:#fff; }
+    #idiomateWidgetBrand .btn.primary:hover{ filter: brightness(.96); }
+    #idiomateWidgetBrand .btn.secondary{ background:var(--green); color:#fff; }
+    #idiomateWidgetBrand .btn.secondary:hover{ filter: brightness(.96); }
+
+    /* Bloque derecho */
+    #idiomateWidgetBrand .illusWrap{
+      position:relative;
+      min-height:360px;
+      display:grid;
+      place-items:center;
+      isolation:isolate;
+    }
+
+    /* Mundo real (IMG) */
+    #idiomateWidgetBrand .worldImg{
+      position:absolute;
+      right:12px;
+      top:18px;
+      width:350px;
+      height:350px;
+      border-radius:50%;
+      overflow:hidden;
+      z-index:1;
+      pointer-events:none;
+
+      box-shadow: 0 18px 34px rgba(0,0,0,.08);
+      opacity:.92;
+      filter: saturate(.98) contrast(.98) brightness(1.02);
+    }
+    #idiomateWidgetBrand .worldImg::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background: radial-gradient(circle at 35% 30%,
+        rgba(255,122,89,.14),
+        rgba(255,255,255,.06) 45%,
+        rgba(255,255,255,.14) 100%);
+      pointer-events:none;
+    }
+    #idiomateWidgetBrand .worldImg img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+      transform: scale(1.04);
+    }
+
+    /* Puntitos */
+    #idiomateWidgetBrand .dots{
+      position:absolute;
+      right:10px; top:38px;
+      width:260px; height:260px;
+      background-image: radial-gradient(#111 1.8px, transparent 2px);
+      background-size: 14px 14px;
+      opacity:.18;
+      border-radius: 20px;
+      z-index:0;
+      transform: rotate(6deg);
+      pointer-events:none;
+    }
+
+    /* ===== BANDERAS ===== */
+    #idiomateWidgetBrand .flagsCloud{
+      position:absolute;
+      inset:0;
+      z-index:5;
+      pointer-events:none;
+    }
+    #idiomateWidgetBrand .flagChip{
+      position:absolute;
+      display:inline-flex;
+      align-items:center;
+      gap:12px;
+      padding:12px 16px;
+      border-radius:999px;
+      background: rgba(255,255,255,.95);
+      border:1px solid rgba(0,0,0,.10);
+      box-shadow: 0 12px 22px rgba(0,0,0,.07);
+
+      font-weight:900;
+      font-size:13px;
+      color:#333;
+
+      will-change: transform;
+      transform: translateZ(0);
+      transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+      user-select:none;
+
+      pointer-events:auto;
+      cursor:default;
+    }
+    #idiomateWidgetBrand .flagChip .f{ font-size:26px; line-height:1; }
+    #idiomateWidgetBrand .flagChip .t{
+      letter-spacing:.9px;
+      color: rgba(0,0,0,.62);
+      font-size:13px;
+    }
+    #idiomateWidgetBrand .flagChip:hover{
+      transform: translateY(-2px) scale(1.07);
+      box-shadow: 0 22px 36px rgba(0,0,0,.12);
+      background: rgba(255,255,255,.99);
+    }
+
+    @media (prefers-reduced-motion: no-preference){
+      #idiomateWidgetBrand .flagChip{ animation: imwFloat 5.6s ease-in-out infinite; }
+      #idiomateWidgetBrand .flagChip:nth-child(2){ animation-duration: 6.3s; animation-delay: .2s; }
+      #idiomateWidgetBrand .flagChip:nth-child(3){ animation-duration: 5.1s; animation-delay: .4s; }
+      #idiomateWidgetBrand .flagChip:nth-child(4){ animation-duration: 6.7s; animation-delay: .1s; }
+      #idiomateWidgetBrand .flagChip:nth-child(5){ animation-duration: 5.9s; animation-delay: .35s; }
+      #idiomateWidgetBrand .flagChip:nth-child(6){ animation-duration: 6.1s; animation-delay: .25s; }
+      #idiomateWidgetBrand .flagChip:nth-child(7){ animation-duration: 5.4s; animation-delay: .15s; }
+      #idiomateWidgetBrand .flagChip:nth-child(8){ animation-duration: 6.9s; animation-delay: .5s; }
+    }
+    @keyframes imwFloat{
+      0%,100%{ transform: translateY(0) translateZ(0); }
+      50%{ transform: translateY(-7px) translateZ(0); }
+    }
+
+    /* posiciones (más cerca del mundo) */
+    #idiomateWidgetBrand .fc5{ right: 260px; top: 62px; }   /* PT */
+    #idiomateWidgetBrand .fc3{ right: 150px; top: 92px; }   /* IT */
+    #idiomateWidgetBrand .fc8{ right: 118px; top: 160px; }  /* JP */
+    #idiomateWidgetBrand .fc4{ right: 92px;  top: 245px; }  /* FR */
+    #idiomateWidgetBrand .fc6{ right: 185px; top: 300px; }  /* DE */
+    #idiomateWidgetBrand .fc1{ left: 180px; top: 118px; }   /* AR */
+    #idiomateWidgetBrand .fc2{ left: 205px; top: 210px; }   /* EN */
+    #idiomateWidgetBrand .fc7{ left: 190px; top: 300px; }   /* RU */
+
+    /* Beneficios */
+    #idiomateWidgetBrand h2{
+      margin:0 0 10px;
+      font-size:44px;
+      line-height:1.06;
+      color:var(--green2);
+      font-weight:900;
+      letter-spacing:-.2px;
+    }
+    #idiomateWidgetBrand .wrap{ max-width:var(--max); margin:0 auto; padding:28px 18px; }
+
+    #idiomateWidgetBrand .benefits{
+      background:#fff;
+      padding: 18px 0 36px;
+      border-top:1px solid var(--line);
+    }
+    #idiomateWidgetBrand .centerTitle{ text-align:center; margin-bottom:16px; }
+
+    /* (la clienta no quería el subtexto: lo saco) */
+    #idiomateWidgetBrand .sub{ display:none; }
+
+    #idiomateWidgetBrand .benefGrid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:20px 34px;
+      max-width: 980px;
+      margin: 0 auto;
+      padding:0 18px;
+    }
+    #idiomateWidgetBrand .benef{
+      display:grid;
+      grid-template-columns: 54px 1fr;
+      gap:14px;
+      align-items:flex-start;
+    }
+    #idiomateWidgetBrand .ico{ width:54px; height:54px; display:grid; place-items:center; }
+    #idiomateWidgetBrand .ico svg{ width:46px; height:46px; fill:var(--green2); }
+    #idiomateWidgetBrand .benef b{ display:block; color:var(--coral2); font-size:18px; margin-bottom:4px; font-weight:900; }
+    #idiomateWidgetBrand .benef span{ color:var(--muted); font-size:14px; line-height:1.6; }
+
+    /* Idiomas (cards) */
+    #idiomateWidgetBrand .langs{ background:#fff; border-top:1px solid var(--line); padding: 28px 0; }
+    #idiomateWidgetBrand .langsHead{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:0 18px 16px;
+      display:flex; justify-content:space-between; align-items:flex-end; gap:12px; flex-wrap:wrap;
+    }
+    #idiomateWidgetBrand .langsHead p{ margin:0; color:var(--muted); }
+
+    #idiomateWidgetBrand .langGrid{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:0 18px;
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:14px;
+    }
+    #idiomateWidgetBrand .card{
+      border:1px solid var(--line);
+      border-radius:14px;
+      background:#fff;
+      padding:16px;
+      box-shadow: 0 10px 24px rgba(0,0,0,.05);
+      display:flex; flex-direction:column; gap:10px;
+      min-height:160px;
+    }
+    #idiomateWidgetBrand .cardTop{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:10px;
+    }
+    #idiomateWidgetBrand .langName{
+      font-weight:900;
+      font-size:18px;           /* tipografía + grande */
+      color:var(--green2);
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+    #idiomateWidgetBrand .langFlag{
+      width:34px; height:34px;
+      border-radius:999px;
+      border:1px solid rgba(0,0,0,.10);
+      display:grid;
+      place-items:center;
+      background:#fff;
+      box-shadow: 0 10px 16px rgba(0,0,0,.05);
+      flex:0 0 auto;
+      font-size:18px;
+      line-height:1;
+    }
+    #idiomateWidgetBrand .pillRow{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+      align-items:center;
+    }
+    #idiomateWidgetBrand .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:7px 10px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      font-size:12px;
+      color:#444;
+      background:#fff;
+      width:max-content;
+      font-weight:900;
+    }
+    #idiomateWidgetBrand .pill.level{
+      border-color: rgba(86,115,31,.25);
+      color: rgba(86,115,31,.98);
+    }
+    #idiomateWidgetBrand .langDesc{
+      margin:0;
+      color:var(--muted);
+      font-size:14px;           /* tipografía + grande */
+      line-height:1.6;
+    }
+    #idiomateWidgetBrand .cardActions{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:auto;
+    }
+    #idiomateWidgetBrand .miniBtn{
+      border:none;
+      cursor:pointer;
+      font-weight:900;
+      background:transparent;
+      color:var(--coral2);
+      padding:0;
+      font-size:14px;           /* tipografía + grande */
+    }
+    #idiomateWidgetBrand .miniBtn:hover{ text-decoration:underline; }
+
+    /* FAQ */
+    #idiomateWidgetBrand .faq{
+      background:#fff;
+      border-top:1px solid var(--line);
+      padding: 26px 0 10px;
+    }
+    #idiomateWidgetBrand .faqGrid{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:0 18px 18px;
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:10px;
+    }
+    #idiomateWidgetBrand details.faqItem{
+      border:1px solid var(--line);
+      border-radius:12px;
+      background:#fff;
+      box-shadow: 0 10px 22px rgba(0,0,0,.04);
+      overflow:hidden;
+    }
+    #idiomateWidgetBrand details.faqItem summary{
+      list-style:none;
+      cursor:pointer;
+      padding:14px 14px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      font-weight:900;
+      color:var(--green2);
+      user-select:none;
+    }
+    #idiomateWidgetBrand details.faqItem summary::-webkit-details-marker{ display:none; }
+    #idiomateWidgetBrand .faqChevron{
+      width:28px; height:28px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      display:grid;
+      place-items:center;
+      background:#fff;
+      color:#444;
+      flex:0 0 auto;
+      transition: transform .18s ease;
+    }
+    #idiomateWidgetBrand details[open] .faqChevron{ transform: rotate(180deg); }
+    #idiomateWidgetBrand .faqBody{
+      padding: 0 14px 14px;
+      color:var(--muted);
+      line-height:1.65;
+      font-size:14px;
+    }
+
+    /* CTA */
+    #idiomateWidgetBrand .ctaBar{ border-top:1px solid var(--line); background:#fff; }
+    #idiomateWidgetBrand .ctaInner{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:12px; flex-wrap:wrap;
+      padding:18px;
+      max-width:var(--max);
+      margin:0 auto;
+    }
+    #idiomateWidgetBrand .ctaInner b{ font-size:16px; }
+    #idiomateWidgetBrand .ctaInner small{ color:var(--muted); }
+
+    @media (max-width: 980px){
+      #idiomateWidgetBrand h1{ font-size:40px; }
+      #idiomateWidgetBrand h2{ font-size:34px; }
+      #idiomateWidgetBrand .heroGrid{ grid-template-columns:1fr; }
+      #idiomateWidgetBrand .benefGrid{ grid-template-columns:1fr; }
+      #idiomateWidgetBrand .langGrid{ grid-template-columns: 1fr; }
+
+      #idiomateWidgetBrand .illusWrap{ min-height:320px; }
+      #idiomateWidgetBrand .worldImg{ width:320px; height:320px; right:10px; top:12px; }
+
+      /* menos banderas en mobile */
+      #idiomateWidgetBrand .fc6,
+      #idiomateWidgetBrand .fc8{ display:none; }
+
+      /* reacomodo */
+      #idiomateWidgetBrand .fc5{ right: 210px; top: 56px; }
+      #idiomateWidgetBrand .fc3{ right: 120px; top: 88px; }
+      #idiomateWidgetBrand .fc4{ right: 70px;  top: 230px; }
+      #idiomateWidgetBrand .fc1{ left: 140px; top: 110px; }
+      #idiomateWidgetBrand .fc2{ left: 160px; top: 200px; }
+      #idiomateWidgetBrand .fc7{ left: 150px; top: 280px; }
+    }
+
+    @media (max-width: 520px){
+      #idiomateWidgetBrand h1{ font-size:34px; }
+      #idiomateWidgetBrand .lead{ font-size:15px; }
+      #idiomateWidgetBrand .worldImg{ width:280px; height:280px; right:6px; top:10px; }
+      #idiomateWidgetBrand .dots{ right:6px; top:28px; width:230px; height:230px; }
+
+      #idiomateWidgetBrand .fc5{ right: 170px; top: 52px; }
+      #idiomateWidgetBrand .fc3{ right: 96px;  top: 86px; }
+      #idiomateWidgetBrand .fc4{ right: 52px;  top: 210px; }
+      #idiomateWidgetBrand .fc1{ left: 105px; top: 100px; }
+      #idiomateWidgetBrand .fc2{ left: 120px; top: 182px; }
+      #idiomateWidgetBrand .fc7{ left: 112px; top: 250px; }
+    }
