@@ -12,7 +12,7 @@ function loadIdiomateWidget() {
       {
         name: "Inglés",
         flag: "🇺🇸",
-        mode: "Online",
+        mode: ["Individual","Grupal"],
         level: "Inicial a Avanzado",
         desc: "Conversación + estructura. Plan según objetivo (trabajo, viaje o exámenes)."
       },
@@ -77,25 +77,29 @@ function loadIdiomateWidget() {
     CONFIG.languages.forEach(l => {
       const card = document.createElement("div");
       card.className = "card";
-      card.innerHTML = `
-        <div class="cardTop">
-          <div class="langName">
-            <span class="langFlag">${l.flag}</span>
-            <span>${l.name}</span>
-          </div>
+card.innerHTML = `
+  <div class="cardTop">
+    <div class="langName">
+      <span class="langFlag">${l.flag}</span>
+      <span>${l.name}</span>
+    </div>
+  </div>
 
-          <div class="pillRow">
-            <span class="pill">${l.mode}</span>
-            <span class="pill level">${l.level}</span>
-          </div>
-        </div>
+  <div class="pillRow">
+    ${
+      Array.isArray(l.mode)
+        ? l.mode.map(m => `<span class="pill level">${m}</span>`).join("")
+        : `<span class="pill level">${l.mode}</span>`
+    }
+  </div>
 
-        <p class="langDesc">${l.desc}</p>
+  <p class="langDesc">${l.desc}</p>
 
-        <div class="cardActions">
-          <button class="miniBtn" type="button" data-cta>Ver detalles</button>
-        </div>
-      `;
+  <div class="cardActions">
+    <button class="miniBtn" type="button" data-cta>Ver detalles</button>
+  </div>
+`;
+
 
       card.querySelector("[data-cta]").addEventListener("click", () =>
         window.open(CONFIG.waLink, "_blank", "noopener")
