@@ -150,15 +150,24 @@
   pointer-events:none;
 }
 
-/* ===== BANDERAS ===== */
+/* ===== BANDERAS (ORBITA RESPONSIVE - NO SE PISAN) ===== */
 #idiomateWidgetBrand .flagsCloud{
   position:absolute;
   inset:0;
   z-index:5;
   pointer-events:none;
+
+  /* centramos el sistema de órbita */
+  display:grid;
+  place-items:center;
 }
+
+/* Cada chip se posiciona en el centro y se mueve con rotate+translate */
 #idiomateWidgetBrand .flagChip{
   position:absolute;
+  top:50%;
+  left:50%;
+
   display:inline-flex;
   align-items:center;
   gap:12px;
@@ -170,49 +179,66 @@
   font-weight:900;
   font-size:13px;
   color:#333;
-  will-change: transform;
-  transform: translateZ(0);
-  transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+
   user-select:none;
   pointer-events:auto;
   cursor:default;
+
+  /* órbita */
+  --r: 175px;   /* radio desktop */
+  --a: 0deg;    /* ángulo */
+  --float: 0px; /* float vertical */
+
+  transform:
+    translate(-50%, -50%)
+    rotate(var(--a))
+    translate(var(--r))
+    rotate(calc(-1 * var(--a)))
+    translateY(var(--float));
+
+  transition: box-shadow .18s ease, background .18s ease, transform .18s ease;
+  will-change: transform;
 }
+
 #idiomateWidgetBrand .flagChip .f{ font-size:26px; line-height:1; }
 #idiomateWidgetBrand .flagChip .t{
   letter-spacing:.9px;
   color: rgba(0,0,0,.62);
   font-size:13px;
 }
+
 #idiomateWidgetBrand .flagChip:hover{
-  transform: translateY(-2px) scale(1.07);
   box-shadow: 0 22px 36px rgba(0,0,0,.12);
   background: rgba(255,255,255,.99);
 }
 
+/* Float sin pisar el transform de la órbita */
 @media (prefers-reduced-motion: no-preference){
-  #idiomateWidgetBrand .flagChip{ animation: imwFloat 5.6s ease-in-out infinite; }
-  #idiomateWidgetBrand .flagChip:nth-child(2){ animation-duration: 6.3s; animation-delay: .2s; }
-  #idiomateWidgetBrand .flagChip:nth-child(3){ animation-duration: 5.1s; animation-delay: .4s; }
-  #idiomateWidgetBrand .flagChip:nth-child(4){ animation-duration: 6.7s; animation-delay: .1s; }
-  #idiomateWidgetBrand .flagChip:nth-child(5){ animation-duration: 5.9s; animation-delay: .35s; }
-  #idiomateWidgetBrand .flagChip:nth-child(6){ animation-duration: 6.1s; animation-delay: .25s; }
-  #idiomateWidgetBrand .flagChip:nth-child(7){ animation-duration: 5.4s; animation-delay: .15s; }
-  #idiomateWidgetBrand .flagChip:nth-child(8){ animation-duration: 6.9s; animation-delay: .5s; }
+  #idiomateWidgetBrand .flagChip{
+    animation: imwFloatVar 6s ease-in-out infinite;
+  }
+  #idiomateWidgetBrand .flagChip:nth-child(2){ animation-duration: 6.4s; animation-delay: .10s; }
+  #idiomateWidgetBrand .flagChip:nth-child(3){ animation-duration: 5.8s; animation-delay: .25s; }
+  #idiomateWidgetBrand .flagChip:nth-child(4){ animation-duration: 6.7s; animation-delay: .15s; }
+  #idiomateWidgetBrand .flagChip:nth-child(5){ animation-duration: 6.1s; animation-delay: .35s; }
+  #idiomateWidgetBrand .flagChip:nth-child(6){ animation-duration: 6.5s; animation-delay: .20s; }
+  #idiomateWidgetBrand .flagChip:nth-child(7){ animation-duration: 5.9s; animation-delay: .30s; }
+  #idiomateWidgetBrand .flagChip:nth-child(8){ animation-duration: 6.8s; animation-delay: .40s; }
 }
-@keyframes imwFloat{
-  0%,100%{ transform: translateY(0) translateZ(0); }
-  50%{ transform: translateY(-7px) translateZ(0); }
+@keyframes imwFloatVar{
+  0%,100%{ --float: 0px; }
+  50%{ --float: -7px; }
 }
 
-/* posiciones (más cerca del mundo) */
-#idiomateWidgetBrand .fc5{ right: 260px; top: 62px; }
-#idiomateWidgetBrand .fc3{ right: 150px; top: 92px; }
-#idiomateWidgetBrand .fc8{ right: 118px; top: 160px; }
-#idiomateWidgetBrand .fc4{ right: 92px;  top: 245px; }
-#idiomateWidgetBrand .fc6{ right: 185px; top: 300px; }
-#idiomateWidgetBrand .fc1{ left: 180px; top: 118px; }
-#idiomateWidgetBrand .fc2{ left: 205px; top: 210px; }
-#idiomateWidgetBrand .fc7{ left: 190px; top: 300px; }
+/* Angulos desktop (8 chips) */
+#idiomateWidgetBrand .fc1{ --a: 20deg; }
+#idiomateWidgetBrand .fc2{ --a: 70deg; }
+#idiomateWidgetBrand .fc3{ --a: 120deg; }
+#idiomateWidgetBrand .fc4{ --a: 170deg; }
+#idiomateWidgetBrand .fc5{ --a: 220deg; }
+#idiomateWidgetBrand .fc6{ --a: 270deg; }
+#idiomateWidgetBrand .fc7{ --a: 315deg; }
+#idiomateWidgetBrand .fc8{ --a: 350deg; }
 
 /* Beneficios */
 #idiomateWidgetBrand h2{
@@ -306,22 +332,20 @@
   line-height:1;
 }
 
-/* ✅ PILL ROW (CORREGIDO: CENTRADO EN CARDS) */
+/* ✅ PILL ROW */
 #idiomateWidgetBrand .pillRow{
   display:flex;
   gap:8px;
   flex-wrap:wrap;
-  justify-content:center;    /* antes flex-end */
+  justify-content:center;
   align-items:center;
   margin-top:6px;
 }
-
-/* pills un toque más compactos */
 #idiomateWidgetBrand .pill{
   display:inline-flex;
   align-items:center;
   gap:8px;
-  padding:6px 12px;          /* antes 7px 10px */
+  padding:6px 12px;
   border-radius:999px;
   border:1px solid var(--line);
   font-size:12px;
@@ -433,15 +457,27 @@
   #idiomateWidgetBrand .illusWrap{ min-height:320px; }
   #idiomateWidgetBrand .worldImg{ width:320px; height:320px; right:10px; top:12px; }
 
-  #idiomateWidgetBrand .fc6,
+  /* ORBITA: menos radio + chips más chicos + menos flags */
+  #idiomateWidgetBrand .flagChip{
+    --r: 150px;
+    padding:10px 14px;
+    gap:10px;
+    font-size:12px;
+  }
+  #idiomateWidgetBrand .flagChip .f{ font-size:22px; }
+  #idiomateWidgetBrand .flagChip .t{ font-size:12px; }
+
+  /* dejamos 6 banderas en tablet */
+  #idiomateWidgetBrand .fc7,
   #idiomateWidgetBrand .fc8{ display:none; }
 
-  #idiomateWidgetBrand .fc5{ right: 210px; top: 56px; }
-  #idiomateWidgetBrand .fc3{ right: 120px; top: 88px; }
-  #idiomateWidgetBrand .fc4{ right: 70px;  top: 230px; }
-  #idiomateWidgetBrand .fc1{ left: 140px; top: 110px; }
-  #idiomateWidgetBrand .fc2{ left: 160px; top: 200px; }
-  #idiomateWidgetBrand .fc7{ left: 150px; top: 280px; }
+  /* re-ángulos (6) */
+  #idiomateWidgetBrand .fc1{ --a: 10deg; }
+  #idiomateWidgetBrand .fc2{ --a: 70deg; }
+  #idiomateWidgetBrand .fc3{ --a: 130deg; }
+  #idiomateWidgetBrand .fc4{ --a: 190deg; }
+  #idiomateWidgetBrand .fc5{ --a: 250deg; }
+  #idiomateWidgetBrand .fc6{ --a: 310deg; }
 }
 
 @media (max-width: 520px){
@@ -450,10 +486,24 @@
   #idiomateWidgetBrand .worldImg{ width:280px; height:280px; right:6px; top:10px; }
   #idiomateWidgetBrand .dots{ right:6px; top:28px; width:230px; height:230px; }
 
-  #idiomateWidgetBrand .fc5{ right: 170px; top: 52px; }
-  #idiomateWidgetBrand .fc3{ right: 96px;  top: 86px; }
-  #idiomateWidgetBrand .fc4{ right: 52px;  top: 210px; }
-  #idiomateWidgetBrand .fc1{ left: 105px; top: 100px; }
-  #idiomateWidgetBrand .fc2{ left: 120px; top: 182px; }
-  #idiomateWidgetBrand .fc7{ left: 112px; top: 250px; }
+  /* ORBITA MOBILE: 4 banderas, radio menor, chips más chicos */
+  #idiomateWidgetBrand .flagChip{
+    --r: 115px;
+    padding:9px 12px;
+    gap:8px;
+    font-size:12px;
+  }
+  #idiomateWidgetBrand .flagChip .f{ font-size:20px; }
+  #idiomateWidgetBrand .flagChip .t{ font-size:12px; }
+
+  #idiomateWidgetBrand .fc5,
+  #idiomateWidgetBrand .fc6,
+  #idiomateWidgetBrand .fc7,
+  #idiomateWidgetBrand .fc8{ display:none; }
+
+  /* re-ángulos (4) */
+  #idiomateWidgetBrand .fc1{ --a: 35deg; }
+  #idiomateWidgetBrand .fc2{ --a: 145deg; }
+  #idiomateWidgetBrand .fc3{ --a: 215deg; }
+  #idiomateWidgetBrand .fc4{ --a: 325deg; }
 }
